@@ -7,7 +7,7 @@ var userSchema = new mongoose.Schema ({
     imageURL: String,
     unitPounds: {type: Boolean, default: true},
     weight: String,
-    channels: [Schema.Types.ObjectId]
+    channels: []
 });
 
 module.exports = mongoose.model('User', userSchema);

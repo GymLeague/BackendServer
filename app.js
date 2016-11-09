@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+mongoose.connect('mongodb://localhost:27017/gym-league');
+
 app.use(bodyParser);
 
 graph.setVersion("2.8");

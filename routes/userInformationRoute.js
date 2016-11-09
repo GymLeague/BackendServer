@@ -1,7 +1,7 @@
 var initialLoginURL = '/api/v1/login';
 var User = require('./../models/user');
 
-moudule.exports = function (app, graph) {
+module.exports = function (app, graph) {
     app.put(initialLoginURL, function (req, res) {
         var data = req.body;
 
