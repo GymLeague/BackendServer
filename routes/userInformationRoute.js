@@ -2,7 +2,7 @@ var initialLoginURL = '/api/v1/login';
 var User = require('./../models/user');
 
 module.exports = function (app, graph) {
-    app.put(initialLoginURL, function (req, res) {
+    app.post(initialLoginURL, function (req, res) {
         console.log('Received the data');
         var data = req.body;
 
@@ -16,10 +16,10 @@ module.exports = function (app, graph) {
         User.create(newUser, function (err, user) {
             if (err) {
                 console.log ("Error when creating user" + err);
-                res.send(err);
+                res.send(err).json("Error occurred");
             } else {
-                console.log("USer has been registered in the database");
-                res.send(200);
+                console.log("User has been registered in the database");
+                res.send(200).json("Received and added");
             }
         });
 
