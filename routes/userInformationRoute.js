@@ -10,7 +10,7 @@ module.exports = function (app, graph) {
             firstName: data.first_name,
             lastName: data.last_name,
             id: data.id,
-            imageURL: data.picture.data.url
+            imageURL: data.image
         };
 
         User.create(newUser, function (err, user) {
