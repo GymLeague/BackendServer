@@ -8,7 +8,8 @@ var app = express();
 
 mongoose.connect('mongodb://localhost:27017/gym-league');
 
-app.use(bodyParser);
+app.use(bodyParser.json({limit: '200mb'}))
+app.use(bodyParser.urlencoded({limit: '200mb', extended: true}))
 
 graph.setVersion("2.8");
 
@@ -16,6 +17,7 @@ graph.setVersion("2.8");
 require('./routes')(app, graph);
 
 app.get('/', function (req, res) {
+    console.log("HERE");
     res.send(200).json("Done");
 });
 
