@@ -15,7 +15,7 @@ module.exports = function (app, graph) {
 
         User.create(newUser, function (err, user) {
             if (err) {
-                console.log ("Error when creating user" + err);
+                console.log("Error when creating user" + err);
                 res.send(err).json("Error occurred");
             } else {
                 console.log("User has been registered in the database");
