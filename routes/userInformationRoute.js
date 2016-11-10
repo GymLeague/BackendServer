@@ -3,8 +3,8 @@ var User = require('./../models/user');
 
 module.exports = function (app, graph) {
     app.post(initialLoginURL, function (req, res) {
-        console.log('Received the data');
         var data = req.body;
+        console.log(data);
 
         var newUser = {
             firstName: data.firstName,

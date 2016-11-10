@@ -16,10 +16,6 @@ graph.setVersion("2.8");
 // Initialize all the routes
 require('./routes')(app, graph);
 
-app.get('/', function (req, res) {
-    console.log("HERE");
-    res.send(200).json("Done");
-});
 
 app.listen(port);
 console.log("App should be listening on the port");
