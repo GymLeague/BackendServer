@@ -4,13 +4,13 @@ var User = require('./../models/user');
 module.exports = function (app, graph) {
     app.post(initialLoginURL, function (req, res) {
         var data = req.body;
-        console.log(data);
+        console.log( data.image.data.url);
 
         var newUser = {
             firstName: data.first_name,
             lastName: data.last_name,
             id: data.id,
-            imageURL: data.image
+            imageURL: data.image.data.url
         };
 
         User.create(newUser, function (err, user) {
