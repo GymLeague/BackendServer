@@ -6,4 +6,4 @@ var channelSchema = new mongoose.Schema ({
     title: String
 });
 
-module.exports = mongoose.models('Channel', channelSchema);
+module.exports = mongoose.model('Channel', channelSchema);
