@@ -1,3 +1,3 @@
-module.exports = function (app, graph) {
-    require('./userInformationRoute')(app, graph);
+module.exports = function (app) {
+    require('./userInformationRoute')(app);
 };

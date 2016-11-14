@@ -1,7 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var port = 51617;
-var graph = require('fbgraph');
 var bodyParser = require('body-parser');
 
 var app = express();
@@ -14,7 +13,7 @@ app.use(bodyParser.urlencoded({limit: '200mb', extended: true}))
 graph.setVersion("2.8");
 
 // Initialize all the routes
-require('./routes')(app, graph);
+require('./routes')(app);
 
 
 app.listen(port);

@@ -1,10 +1,11 @@
 var initialLoginURL = '/api/v1/login';
+var updateUserURL = 'api/v1/updateUser';
+var deleteUserURL = 'api/v1/deleteUser';
 var User = require('./../models/user');
 
-module.exports = function (app, graph) {
+module.exports = function (app) {
     app.post(initialLoginURL, function (req, res) {
         var data = req.body;
-        console.log( data.image.data.url);
 
         var newUser = {
             firstName: data.first_name,
@@ -16,12 +17,43 @@ module.exports = function (app, graph) {
         User.create(newUser, function (err, user) {
             if (err) {
                 console.log("Error when creating user" + err);
-                res.send(err).json("Error occurred");
+                res.send(err).send("Error occurred");
             } else {
                 console.log("User has been registered in the database");
-                res.send(200).json("Received and added");
+                res.status(200).send("Received and added");
             }
         });
 
     });
+
+    app.post(updateUserURL, function (req, res) {
+        var data = req.body;
+        var id = data.id;
+
+        User.findOne({'id' : id}, function (err, user) {
+            if (err) {
+                res.status(500).send("Error occurred while retrieving user from db");
+            }
+            else if (user) {
+
+            } else {
+                res.status(502).send("Could not find user id in the database");
+            }
+        });
+    });
+
+    app.delete(deleteUserURL, function (req, res) {
+        var data = req.body;
+        var id = data.id;
+
+        User.findOne({'id' : id}, function (err, user) {
+            if (user){
+                user.remove();
+                res.status(200)
+            } else {
+                res.send(error).status(500)
+            }
+        });
+    });
+
 };
