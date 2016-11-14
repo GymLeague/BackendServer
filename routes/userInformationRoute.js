@@ -1,5 +1,5 @@
 var initialLoginURL = '/api/v1/login';
-var updateUserURL = 'api/v1/updateUser';
+var updateUserURL = 'api/v1/updateUser'; // Can be used to update weight, pounds/kg, or both
 var deleteUserURL = 'api/v1/deleteUser';
 var User = require('./../models/user');
 
@@ -35,6 +35,12 @@ module.exports = function (app) {
                 res.status(500).send("Error occurred while retrieving user from db");
             }
             else if (user) {
+                if (data.hasOwnProperty(unitPounds)) {
+                    user.unitPounds = data.unitPounds;
+                }
+                else if (data.hasOwnProperty(weight)) {
+                    user.weight = user.unitPounds ? weight : weight * 2.2;
+                }
 
             } else {
                 res.status(502).send("Could not find user id in the database");
